@@ -2,7 +2,7 @@ package library.items;
 
 import java.util.Objects;
 
-public class Magazine extends Item {
+public class Magazine extends Item implements SubscribableItem{
 
     private int issuedNumber;
     public Magazine(String title, String author, String genre, boolean availability) {
@@ -36,5 +36,15 @@ public class Magazine extends Item {
                 ", genre='" + genre + '\'' +
                 ", availability=" + availability +
                 '}';
+    }
+
+    @Override
+    public void subscribe() {
+
+    }
+
+    @Override
+    public void unsubscribe() {
+
     }
 }

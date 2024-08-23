@@ -2,7 +2,7 @@ package library.items;
 
 import java.util.Objects;
 
-public class Item {
+public abstract class Item {
     protected String title;
     protected String author;
     protected String genre;

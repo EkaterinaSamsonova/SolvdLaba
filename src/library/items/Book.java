@@ -1,8 +1,9 @@
 package library.items;
 
+import java.util.Date;
 import java.util.Objects;
 
-public class Book extends Item {
+public class Book extends Item implements BorrowableItem, RenewableItem, ReservableItem{
 
     private int isbn;
     private int pageCount;
@@ -14,6 +15,11 @@ public class Book extends Item {
     public void reserve(){
         this.availability = false;
         System.out.println("Reserved successfully:" + this);
+    }
+
+    @Override
+    public void cancelReservation() {
+
     }
 
     @Override
@@ -40,5 +46,25 @@ public class Book extends Item {
                 ", genre='" + genre + '\'' +
                 ", availability=" + availability +
                 '}';
+    }
+
+    @Override
+    public void borrow() {
+
+    }
+
+    @Override
+    public void returnItem() {
+
+    }
+
+    @Override
+    public Date calculateDueDate() {
+        return null;
+    }
+
+    @Override
+    public void renew() {
+
     }
 }
