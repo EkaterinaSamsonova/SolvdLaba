@@ -2,7 +2,7 @@ package library.items;
 
 import java.util.Objects;
 
-public class DigitalMedia extends Item {
+public class DigitalMedia extends Item implements RenewableItem, ReservableItem {
 
     private String format;
     private double fileSize;
@@ -11,7 +11,7 @@ public class DigitalMedia extends Item {
         super(title, author, genre, availability);
     }
 
-    public void download(){
+    public final void download(){
         System.out.println("Downloaded successfully:" + this);
     }
 
@@ -39,5 +39,20 @@ public class DigitalMedia extends Item {
                 ", genre='" + genre + '\'' +
                 ", availability=" + availability +
                 '}';
+    }
+
+    @Override
+    public void renew() {
+
+    }
+
+    @Override
+    public void reserve() {
+
+    }
+
+    @Override
+    public void cancelReservation() {
+
     }
 }

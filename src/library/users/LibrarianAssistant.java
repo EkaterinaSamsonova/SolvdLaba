@@ -2,7 +2,7 @@ package library.users;
 
 import java.util.Objects;
 
-public class LibrarianAssistant extends User{
+public final class LibrarianAssistant extends User{
 
     private int employeeNumber;
 
