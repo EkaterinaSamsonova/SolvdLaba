@@ -1,7 +1,11 @@
 package library;
 
+import library.exceptions.BookNotFoundException;
 import library.items.Item;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,7 +21,11 @@ public class LibraryCatalog implements Catalog {
 
     List<Item> libraryItems = new ArrayList<>();
 
-    public void addItem(Item item){
+    public void addItem(Item item) {
+        if(item == null){
+           throw new BookNotFoundException("Book not found:" + item);
+        }
+
         libraryItems.add(item);
         System.out. println("Added new item:" + item.toString());
     }
@@ -33,7 +41,12 @@ public class LibraryCatalog implements Catalog {
 
     @Override
     public void searchByAuthor(String author) {
-
+        try (FileReader fr = new FileReader("src/authors.txt");
+             BufferedReader br = new BufferedReader(fr)) {
+            br.readLine();
+        } catch (IOException e) {
+            System.out.println("File not found");
+        }
     }
 
     @Override
