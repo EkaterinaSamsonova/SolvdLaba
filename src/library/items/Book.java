@@ -1,5 +1,7 @@
 package library.items;
 
+import library.exceptions.BookIsReservedException;
+
 import java.util.Date;
 import java.util.Objects;
 
@@ -12,7 +14,10 @@ public class Book extends Item implements BorrowableItem, RenewableItem, Reserva
         super(title, author, genre, availability);
     }
 
-    public void reserve(){
+    public void reserve() throws BookIsReservedException {
+        if(!availability){
+            throw new BookIsReservedException();
+        }
         this.availability = false;
         System.out.println("Reserved successfully:" + this);
     }
