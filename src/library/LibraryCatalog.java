@@ -1,7 +1,13 @@
 package library;
 
+import library.collections.CustomLinkedList;
 import library.exceptions.BookNotFoundException;
+import library.exceptions.UnsupportedLibraryItem;
+import library.items.Book;
+import library.items.DigitalMedia;
 import library.items.Item;
+import library.items.Magazine;
+import library.users.User;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -19,14 +25,20 @@ public class LibraryCatalog implements Catalog {
         System.out.println("Library Catalog is created");
     }
 
-    List<Item> libraryItems = new ArrayList<>();
+    List<Book> books = new ArrayList<>();
+    List<DigitalMedia> digitals = new ArrayList<>();
+    List<Magazine> magazines = new ArrayList<>();
+    CustomLinkedList<User> users = new CustomLinkedList<>();
 
     public void addItem(Item item) {
-        if(item == null){
-           throw new BookNotFoundException("Book not found:" + item);
+        switch (item) {
+            case null -> throw new BookNotFoundException("Book not found:" + item);
+            case Book book -> books.add(book);
+            case DigitalMedia media -> digitals.add(media);
+            case Magazine magazine -> magazines.add(magazine);
+            default -> throw new UnsupportedLibraryItem("Library item of type [" + item.getClass() + "] is not supported.");
         }
 
-        libraryItems.add(item);
         System.out. println("Added new item:" + item.toString());
     }
 
