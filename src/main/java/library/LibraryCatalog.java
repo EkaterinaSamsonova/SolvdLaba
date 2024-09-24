@@ -14,6 +14,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Stream;
 
 public class LibraryCatalog implements Catalog {
 
@@ -64,5 +65,9 @@ public class LibraryCatalog implements Catalog {
     @Override
     public void searchByGenre(String genre) {
 
+    }
+
+    public Stream<Book> streamBooks() {
+        return books.stream();
     }
 }
