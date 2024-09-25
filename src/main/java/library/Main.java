@@ -6,7 +6,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 public class Main {
-    public static void main(String[] args){
+    public static void main(String[] args) {
         Logger logger = LogManager.getLogger(Main.class);
 
         LibraryCatalog catalog = new LibraryCatalog();
@@ -40,5 +40,20 @@ public class Main {
         System.out.println(disc1);
         System.out.println(magazine1);
         LibraryCatalog.previewItemInfo(fictionBook);
+
+        //Streaming
+        long authorBookCount = catalog.streamBooks()
+                .filter(book -> book.getAuthor().equals("Stephen King"))  // Non-terminal operation
+                .distinct()                                               // Non-terminal operation
+                .count();                                                 // Terminal operation
+        System.out.println("Number of books by Stephen King: " + authorBookCount);
+
+        catalog.streamBooks()
+                .filter(book -> book.getGenre().equals("Fiction"))        // Non-terminal operation
+                .limit(10)                                        // Non-terminal operation
+                .map(Book::getTitle)                                      // Non-terminal operation
+                .forEach(System.out::println);                            // Terminal operation
+
+        System.out.println("Number of Fiction: " + authorBookCount);
     }
 }

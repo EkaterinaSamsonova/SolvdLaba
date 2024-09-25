@@ -45,4 +45,20 @@ public abstract class Item {
                 ", availability=" + availability +
                 '}';
     }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public String getAuthor() {
+        return author;
+    }
+
+    public String getGenre() {
+        return genre;
+    }
+
+    public boolean isAvailability() {
+        return availability;
+    }
 }
